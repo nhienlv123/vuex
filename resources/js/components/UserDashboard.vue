@@ -22,7 +22,9 @@
             UserDetail
         },
         computed: {
-            ...mapGetters(['userTotal'])
+            ...mapGetters({
+                userTotal: 'detail/userTotal'
+            })
         }
     }
 </script>

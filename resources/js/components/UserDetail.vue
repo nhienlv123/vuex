@@ -1,6 +1,6 @@
 <template>
     <div class="user-detail">
-        <div class="user-detail-container" v-for="detail in userDetailInfo" :key="detail">
+        <div class="user-detail-container" v-for="detail in userDetailInfo" :key="detail.id">
             <div class="user-name">                
                 Name: {{ detail.name.last }} {{ detail.name.first }}
             </div>
@@ -24,10 +24,10 @@
     import { mapGetters, mapState } from 'vuex'
     export default {
         computed: {
-        // mapState({
-        //     userDetailInfo: state => state.userSelected
-        // }),
-        ...mapGetters (['userDetailInfo']),        
+            // ...mapState({
+            //     userDetailInfo: state => state.detail.userSelected
+            // }),
+            ...mapGetters ({ userDetailInfo: 'detail/userDetailInfo'}),        
         }
     }
 </script>

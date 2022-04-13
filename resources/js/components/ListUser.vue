@@ -27,7 +27,7 @@
         //     }
         // },
         computed: mapState({
-            userData: state => state.userData
+            userData: state => state.detail.userData
         }),
 
         methods: {
@@ -35,7 +35,7 @@
             // ...mapMutations(['SELECT_USER']),
             
             selectUser(userId) {
-                this.$store.dispatch('selectUser', userId)
+                this.$store.dispatch('detail/selectUser', userId)
             }            
         }
     }
