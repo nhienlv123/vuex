@@ -5337,14 +5337,14 @@ __webpack_require__.r(__webpack_exports__);
   // },
   computed: (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)({
     userData: function userData(state) {
-      return state.userData;
+      return state.detail.userData;
     }
   }),
   methods: {
     // ...mapActions(['selectUser']),
     // ...mapMutations(['SELECT_USER']),
     selectUser: function selectUser(userId) {
-      this.$store.dispatch('selectUser', userId);
+      this.$store.dispatch('detail/selectUser', userId);
     }
   }
 });
@@ -5393,7 +5393,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     ListUser: _ListUser_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     UserDetail: _UserDetail_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(['userTotal']))
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
+    userTotal: 'detail/userTotal'
+  }))
 });
 
 /***/ }),
@@ -5440,7 +5442,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(['userDetailInfo']))
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)({
+    userDetailInfo: 'detail/userDetailInfo'
+  }))
 });
 
 /***/ }),
@@ -5518,6 +5522,117 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/store/module/detail/actions.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/store/module/detail/actions.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  selectUser: function selectUser(context, userId) {
+    context.commit('SELECT_USER', userId);
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/module/detail/getters.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/store/module/detail/getters.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  userTotal: function userTotal(state) {
+    return state.userData.length;
+  },
+  userDetailInfo: function userDetailInfo(state) {
+    return state.userSelected;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/module/detail/index.js":
+/*!***************************************************!*\
+  !*** ./resources/js/store/module/detail/index.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./actions */ "./resources/js/store/module/detail/actions.js");
+/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getters */ "./resources/js/store/module/detail/getters.js");
+/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./mutations */ "./resources/js/store/module/detail/mutations.js");
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./state */ "./resources/js/store/module/detail/state.js");
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  actions: _actions__WEBPACK_IMPORTED_MODULE_0__["default"],
+  getters: _getters__WEBPACK_IMPORTED_MODULE_1__["default"],
+  mutations: _mutations__WEBPACK_IMPORTED_MODULE_2__["default"],
+  state: _state__WEBPACK_IMPORTED_MODULE_3__["default"]
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/module/detail/mutations.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/store/module/detail/mutations.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  SELECT_USER: function SELECT_USER(state, userId) {
+    state.userSelected = state.userData.filter(function (userData) {
+      return userData.id == userId;
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/module/detail/state.js":
+/*!***************************************************!*\
+  !*** ./resources/js/store/module/detail/state.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _data_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data.json */ "./resources/js/store/module/detail/data.json");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  userData: _data_json__WEBPACK_IMPORTED_MODULE_0__,
+  userSelected: []
+});
+
+/***/ }),
+
 /***/ "./resources/js/store/store.js":
 /*!*************************************!*\
   !*** ./resources/js/store/store.js ***!
@@ -5531,39 +5646,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _data_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./data.json */ "./resources/js/store/data.json");
+/* harmony import */ var _module_detail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./module/detail */ "./resources/js/store/module/detail/index.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]); // import data from "./data.json";
+// const storeData = {
+//     state: {
+//         userData: data,
+//         userSelected: []        
+//     },
+//     getters:{
+//         userTotal: state => state.userData.length,
+//         userDetailInfo: state => state.userSelected
+//     },
+//     mutations: {
+//         SELECT_USER(state, userId) {
+//             state.userSelected = state.userData.filter(userData => userData.id == userId)
+//         }
+//     },
+//     actions: {
+//         selectUser(context, userId) {
+//             context.commit('SELECT_USER', userId)
+//         }
+//     }
+// }
+// const store = new Vuex.Store(storeData)
+// export default store
+
 
 var storeData = {
-  state: {
-    userData: _data_json__WEBPACK_IMPORTED_MODULE_2__,
-    userSelected: []
-  },
-  getters: {
-    userTotal: function userTotal(state) {
-      return state.userData.length;
-    },
-    userDetailInfo: function userDetailInfo(state) {
-      return state.userSelected;
-    }
-  },
-  mutations: {
-    SELECT_USER: function SELECT_USER(state, userId) {
-      state.userSelected = state.userData.filter(function (userData) {
-        return userData.id == userId;
-      });
-    }
-  },
-  actions: {
-    selectUser: function selectUser(context, userId) {
-      context.commit('SELECT_USER', userId);
-    }
+  modules: {
+    detail: _module_detail__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 };
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store(storeData);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store); // export default new Vuex.Store({
+//     modules: {
+//         detail
+//     }
+// })
 
 /***/ }),
 
@@ -28914,41 +29035,47 @@ var render = function () {
     "div",
     { staticClass: "user-detail" },
     _vm._l(_vm.userDetailInfo, function (detail) {
-      return _c("div", { key: detail, staticClass: "user-detail-container" }, [
-        _c("div", { staticClass: "user-name" }, [
-          _vm._v(
-            "                \n            Name: " +
-              _vm._s(detail.name.last) +
-              " " +
-              _vm._s(detail.name.first) +
-              "\n        "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "user-email" }, [
-          _vm._v("\n            Email: " + _vm._s(detail.email) + "\n        "),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "user-dob" }, [
-          _vm._v(
-            "\n            DOB: " + _vm._s(detail.dob.date) + "\n        "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "user-gender" }, [
-          _vm._v(
-            "\n            Gender: " + _vm._s(detail.gender) + "\n        "
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "user-address" }, [
-          _vm._v(
-            "\n            Address: " +
-              _vm._s(detail.location.city) +
-              "\n        "
-          ),
-        ]),
-      ])
+      return _c(
+        "div",
+        { key: detail.id, staticClass: "user-detail-container" },
+        [
+          _c("div", { staticClass: "user-name" }, [
+            _vm._v(
+              "                \n            Name: " +
+                _vm._s(detail.name.last) +
+                " " +
+                _vm._s(detail.name.first) +
+                "\n        "
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "user-email" }, [
+            _vm._v(
+              "\n            Email: " + _vm._s(detail.email) + "\n        "
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "user-dob" }, [
+            _vm._v(
+              "\n            DOB: " + _vm._s(detail.dob.date) + "\n        "
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "user-gender" }, [
+            _vm._v(
+              "\n            Gender: " + _vm._s(detail.gender) + "\n        "
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "user-address" }, [
+            _vm._v(
+              "\n            Address: " +
+                _vm._s(detail.location.city) +
+                "\n        "
+            ),
+          ]),
+        ]
+      )
     }),
     0
   )
@@ -42394,10 +42521,10 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 
 /***/ }),
 
-/***/ "./resources/js/store/data.json":
-/*!**************************************!*\
-  !*** ./resources/js/store/data.json ***!
-  \**************************************/
+/***/ "./resources/js/store/module/detail/data.json":
+/*!****************************************************!*\
+  !*** ./resources/js/store/module/detail/data.json ***!
+  \****************************************************/
 /***/ ((module) => {
 
 "use strict";

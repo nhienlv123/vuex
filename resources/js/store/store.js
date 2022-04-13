@@ -3,31 +3,49 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-import data from "./data.json";
+// import data from "./data.json";
 
+// const storeData = {
+//     state: {
+//         userData: data,
+//         userSelected: []        
+//     },
+//     getters:{
+//         userTotal: state => state.userData.length,
+//         userDetailInfo: state => state.userSelected
+//     },
+//     mutations: {
+//         SELECT_USER(state, userId) {
+//             state.userSelected = state.userData.filter(userData => userData.id == userId)
+//         }
+//     },
+//     actions: {
+//         selectUser(context, userId) {
+//             context.commit('SELECT_USER', userId)
+//         }
+//     }
+// }
+// const store = new Vuex.Store(storeData)
+
+// export default store
+
+
+import detail from './module/detail';
 const storeData = {
-    state: {
-        userData: data,
-        userSelected: []        
-    },
-    getters:{
-        userTotal: state => state.userData.length,
-        userDetailInfo: state => state.userSelected
-    },
-    mutations: {
-        SELECT_USER(state, userId) {
-            state.userSelected = state.userData.filter(userData => userData.id == userId)
-        }
-    },
-    actions: {
-        selectUser(context, userId) {
-            context.commit('SELECT_USER', userId)
-        }
+    modules: {
+        detail
     }
 }
 
-const store = new Vuex.Store(storeData)
-
+const store = new Vuex.Store(storeData)    
 export default store
+
+
+// export default new Vuex.Store({
+//     modules: {
+//         detail
+//     }
+// })
+
 
    
